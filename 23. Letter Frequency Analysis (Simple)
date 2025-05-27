@@ -1,0 +1,7 @@
+void letterFrequency(char* text, int freq[26]) {
+    for (int i = 0; text[i] != '\0'; i++) {
+        if (isalpha(text[i])) {
+            freq[tolower(text[i]) - 'a']++;
+        }
+    }
+}
