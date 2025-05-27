@@ -1,0 +1,6 @@
+void vernamCipher(char* text, char* key, char* result) {
+    for (int i = 0; text[i]; i++) {
+        result[i] = text[i] ^ key[i];
+    }
+    result[strlen(text)] = '\0';
+}
