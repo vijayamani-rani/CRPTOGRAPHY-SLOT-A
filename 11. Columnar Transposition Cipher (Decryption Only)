@@ -1,0 +1,17 @@
+void columnarDecrypt(char* text, int key, char* result) {
+    int len = strlen(text);
+    int row = (len + key - 1) / key;
+    int shortCols = (key * row) - len;
+    int k = 0;
+
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < key; j++) {
+            int index = j * row + i;
+            if (j >= key - shortCols && i == row - 1)
+                continue;
+            if (index < len)
+                result[k++] = text[index];
+        }
+    }
+    result[k] = '\0';
+}
