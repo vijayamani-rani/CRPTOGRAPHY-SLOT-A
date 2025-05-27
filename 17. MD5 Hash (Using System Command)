@@ -1,0 +1,7 @@
+#include <stdlib.h>
+
+void md5Hash(char* filename) {
+    char command[100];
+    sprintf(command, "md5sum %s", filename);
+    system(command);
+}
