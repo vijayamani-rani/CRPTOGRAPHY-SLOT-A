@@ -1,0 +1,5 @@
+#include <stdio.h>
+void DES_encrypt(char* plaintext, char* key) {
+    printf("DES encryption is complex and usually requires libraries.\n");
+    // Placeholder only
+}
