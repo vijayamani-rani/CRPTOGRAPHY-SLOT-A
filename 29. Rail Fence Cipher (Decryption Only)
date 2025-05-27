@@ -1,0 +1,9 @@
+void railFenceDecrypt(char* text, int rails, char* result) {
+    int len = strlen(text), idx = 0;
+    for (int r = 0; r < rails; r++) {
+        for (int i = r; i < len; i += rails) {
+            result[i] = text[idx++];
+        }
+    }
+    result[len] = '\0';
+}
