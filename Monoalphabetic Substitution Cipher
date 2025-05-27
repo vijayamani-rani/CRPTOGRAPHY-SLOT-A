@@ -1,0 +1,21 @@
+void mono_encrypt(char *text, char *keymap) {
+    for (int i = 0; text[i] != '\0'; i++) {
+        if (isalpha(text[i])) {
+            int idx = tolower(text[i]) - 'a';
+            text[i] = isupper(text[i]) ? toupper(keymap[idx]) : keymap[idx];
+        }
+    }
+}
+
+void mono_decrypt(char *text, char *keymap) {
+    char revmap[26];
+    for (int i = 0; i < 26; i++)
+        revmap[keymap[i] - 'a'] = 'a' + i;
+
+    for (int i = 0; text[i] != '\0'; i++) {
+        if (isalpha(text[i])) {
+            int idx = tolower(text[i]) - 'a';
+            text[i] = isupper(text[i]) ? toupper(revmap[idx]) : revmap[idx];
+        }
+    }
+}
