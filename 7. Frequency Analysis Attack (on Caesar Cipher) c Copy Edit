@@ -1,0 +1,12 @@
+void frequencyAnalysis(char* ciphertext) {
+    int freq[26] = {0}, i;
+    for (i = 0; ciphertext[i] != '\0'; i++) {
+        if (ciphertext[i] >= 'A' && ciphertext[i] <= 'Z')
+            freq[ciphertext[i] - 'A']++;
+        else if (ciphertext[i] >= 'a' && ciphertext[i] <= 'z')
+            freq[ciphertext[i] - 'a']++;
+    }
+    printf("\nFrequency Analysis:\n");
+    for (i = 0; i < 26; i++)
+        printf("%c: %d\n", 'A' + i, freq[i]);
+}
