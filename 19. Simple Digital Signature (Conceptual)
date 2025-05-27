@@ -1,0 +1,9 @@
+int generateSignature(char* message, int privateKey) {
+    int hash = simpleHash(message);
+    return hash ^ privateKey;
+}
+
+int verifySignature(char* message, int signature, int publicKey) {
+    int hash = simpleHash(message);
+    return (signature ^ publicKey) == hash;
+}
