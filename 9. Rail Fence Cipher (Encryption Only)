@@ -1,0 +1,11 @@
+void railFenceEncrypt(char* text, int key, char* result) {
+    int len = strlen(text);
+    int k = 0;
+    for (int i = 0; i < key; i++) {
+        for (int j = 0; j < len; j++) {
+            if (j % key == i)
+                result[k++] = text[j];
+        }
+    }
+    result[k] = '\0';
+}
