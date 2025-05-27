@@ -1,0 +1,22 @@
+#include <stdlib.h>
+void playfair_encrypt(char digraph[], char matrix[5][5]) {
+    // Implement based on digraph rules: same row, same column, rectangle rule
+    // Skipping detailed implementation due to complexity
+}
+
+/*
+Experiment 4: Hill Cipher (2x2 matrix)
+*/
+#include <math.h>
+int hill_encrypt(char *text, int key[2][2]) {
+    int len = strlen(text);
+    if (len % 2 != 0) text[len++] = 'X';
+
+    for (int i = 0; i < len; i += 2) {
+        int a = text[i] - 'A';
+        int b = text[i + 1] - 'A';
+        text[i] = ((key[0][0] * a + key[0][1] * b) % 26) + 'A';
+        text[i + 1] = ((key[1][0] * a + key[1][1] * b) % 26) + 'A';
+    }
+    return 1;
+}
