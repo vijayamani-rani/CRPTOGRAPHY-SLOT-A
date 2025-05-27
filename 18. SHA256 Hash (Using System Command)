@@ -1,0 +1,5 @@
+void sha256Hash(char* filename) {
+    char command[100];
+    sprintf(command, "sha256sum %s", filename);
+    system(command);
+}
