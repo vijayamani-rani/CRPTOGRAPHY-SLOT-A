@@ -1,0 +1,11 @@
+void rot13(char* text, char* result) {
+    for (int i = 0; text[i]; i++) {
+        if (isalpha(text[i])) {
+            char base = isupper(text[i]) ? 'A' : 'a';
+            result[i] = ((text[i] - base + 13) % 26) + base;
+        } else {
+            result[i] = text[i];
+        }
+    }
+    result[strlen(text)] = '\0';
+}
