@@ -1,0 +1,11 @@
+void atbashCipher(char* text, char* result) {
+    for (int i = 0; text[i]; i++) {
+        if (isupper(text[i]))
+            result[i] = 'Z' - (text[i] - 'A');
+        else if (islower(text[i]))
+            result[i] = 'z' - (text[i] - 'a');
+        else
+            result[i] = text[i];
+    }
+    result[strlen(text)] = '\0';
+}
