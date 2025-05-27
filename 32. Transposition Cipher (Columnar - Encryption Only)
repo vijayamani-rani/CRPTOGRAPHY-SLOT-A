@@ -1,0 +1,9 @@
+void transpositionEncrypt(char* text, int key, char* result) {
+    int len = strlen(text), idx = 0;
+    for (int col = 0; col < key; col++) {
+        for (int i = col; i < len; i += key) {
+            result[idx++] = text[i];
+        }
+    }
+    result[idx] = '\0';
+}
