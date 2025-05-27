@@ -1,0 +1,19 @@
+int modInverse(int a, int m) {
+    a %= m;
+    for (int x = 1; x < m; x++)
+        if ((a * x) % m == 1)
+            return x;
+    return -1;
+}
+
+void affineEncrypt(char* text, int a, int b, char* result) {
+    for (int i = 0; text[i] != '\0'; i++) {
+        if (isalpha(text[i])) {
+            char base = isupper(text[i]) ? 'A' : 'a';
+            result[i] = ((a * (text[i] - base) + b) % 26) + base;
+        } else {
+            result[i] = text[i];
+        }
+    }
+    result[strlen(text)] = '\0';
+}
