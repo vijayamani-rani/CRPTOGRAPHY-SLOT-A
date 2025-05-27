@@ -1,0 +1,24 @@
+#include <string.h>
+const char base64_table[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+
+void base64Encode(unsigned char* input, int len, char* output) {
+    int i, j, index = 0;
+    unsigned char array3[3], array4[4];
+
+    for (i = 0; i < len;) {
+        int k = 0;
+        while (k < 3 && i < len)
+            array3[k++] = input[i++];
+        while (k < 3)
+            array3[k++] = '\0';
+
+        array4[0] = (array3[0] & 0xfc) >> 2;
+        array4[1] = ((array3[0] & 0x03) << 4) | ((array3[1] & 0xf0) >> 4);
+        array4[2] = ((array3[1] & 0x0f) << 2) | ((array3[2] & 0xc0) >> 6);
+        array4[3] = array3[2] & 0x3f;
+
+        for (j = 0; j < 4; j++)
+            output[index++] = (i - k + j < len) ? base64_table[array4[j]] : '=';
+    }
+    output[index] = '\0';
+}
