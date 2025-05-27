@@ -1,0 +1,12 @@
+void affineDecrypt(char* text, int a, int b, char* result) {
+    int a_inv = modInverse(a, 26);
+    for (int i = 0; text[i] != '\0'; i++) {
+        if (isalpha(text[i])) {
+            char base = isupper(text[i]) ? 'A' : 'a';
+            result[i] = (a_inv * ((text[i] - base - b + 26)) % 26) + base;
+        } else {
+            result[i] = text[i];
+        }
+    }
+    result[strlen(text)] = '\0';
+}
