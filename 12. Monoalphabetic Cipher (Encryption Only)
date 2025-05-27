@@ -1,0 +1,11 @@
+void monoEncrypt(char* text, char* keyMap, char* result) {
+    for (int i = 0; text[i] != '\0'; i++) {
+        if (isalpha(text[i])) {
+            int index = tolower(text[i]) - 'a';
+            result[i] = isupper(text[i]) ? toupper(keyMap[index]) : keyMap[index];
+        } else {
+            result[i] = text[i];
+        }
+    }
+    result[strlen(text)] = '\0';
+}
