@@ -1,0 +1,14 @@
+void keyedCaesar(char* text, char* key, char* result) {
+    int shift = 0;
+    for (int i = 0; key[i]; i++) shift += key[i];
+    shift %= 26;
+    for (int i = 0; text[i]; i++) {
+        if (isalpha(text[i])) {
+            char base = isupper(text[i]) ? 'A' : 'a';
+            result[i] = ((text[i] - base + shift) % 26) + base;
+        } else {
+            result[i] = text[i];
+        }
+    }
+    result[strlen(text)] = '\0';
+}
