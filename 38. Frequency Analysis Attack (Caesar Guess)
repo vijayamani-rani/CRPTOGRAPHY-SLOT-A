@@ -1,0 +1,17 @@
+char frequencyAttackCaesar(char* cipher) {
+    int freq[26] = {0};
+    for (int i = 0; cipher[i]; i++) {
+        if (isalpha(cipher[i]))
+            freq[tolower(cipher[i]) - 'a']++;
+    }
+
+    int max = 0, maxIndex = 0;
+    for (int i = 0; i < 26; i++) {
+        if (freq[i] > max) {
+            max = freq[i];
+            maxIndex = i;
+        }
+    }
+
+    return (maxIndex - ('e' - 'a') + 26) % 26;
+}
