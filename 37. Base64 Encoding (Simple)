@@ -1,0 +1,16 @@
+const char base64_table[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+
+void base64Encode(unsigned char* data, int len, char* result) {
+    int i, j;
+    for (i = 0, j = 0; i < len;) {
+        int val = (data[i++] << 16);
+        if (i < len) val |= (data[i++] << 8);
+        if (i < len) val |= (data[i++]);
+
+        result[j++] = base64_table[(val >> 18) & 0x3F];
+        result[j++] = base64_table[(val >> 12) & 0x3F];
+        result[j++] = (i > len + 1) ? '=' : base64_table[(val >> 6) & 0x3F];
+        result[j++] = (i > len) ? '=' : base64_table[val & 0x3F];
+    }
+    result[j] = '\0';
+}
